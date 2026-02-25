@@ -1,0 +1,13 @@
+build:
+  version: "QA-CARDS-version"
+
+cards:
+  message: "Welcome to bank - CARDS microservice - QA"
+  contacts:
+    name: "Qa Lead"
+    email: "qa_support@bank.com"
+  phones:
+    - (222) 222 2220
+    - (222) 222 2221
+    - (222) 222 2222
+

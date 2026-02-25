@@ -1,0 +1,13 @@
+build:
+  version: "DEV-CARDS-version"
+
+cards:
+  message: "Welcome to bank - CARDS microservice - DEV"
+  contacts:
+    name: "Dev Lead"
+    email: "dev_support@bank.com"
+  phones:
+    - (111) 111 1110
+    - (111) 111 1111
+    - (111) 111 1112
+

@@ -1,0 +1,13 @@
+build:
+  version: "PROD-CARDS-version"
+
+cards:
+  message: "Welcome to bank - CARDS microservice - PROD"
+  contacts:
+    name: "Prod Lead"
+    email: "prod_support@bank.com"
+  phones:
+    - (333) 333 3330
+    - (333) 333 3331
+    - (333) 333 3332
+

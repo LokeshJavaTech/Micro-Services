@@ -1,0 +1,12 @@
+build:
+  version: "qa-ACCOUNTS-version"
+
+accounts:
+  message: "Welcome to bank - ACCOUNTS microservice - QA"
+  contacts:
+    name: "QA Lead"
+    email: "qa_support@bank.com"
+  phones:
+    - (333) 333 3330
+    - (333) 333 3331
+    - (333) 333 3332

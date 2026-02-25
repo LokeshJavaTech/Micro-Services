@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: cards_ms
+
+  datasource:
+    url: jdbc:h2:mem:cards_db
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true                                        # Show SQL
+    hibernate:
+      ddl-auto: update
+      #properties:
+      #  hibernate:
+      #    format_sql: true                                  # Format SQL nicely
+
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+
+# To also show bind parameter values
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG                                        # Show SQL
+        orm:
+          jdbc:
+            bind: TRACE                                     # Show bind parameters

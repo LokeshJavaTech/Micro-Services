@@ -1,0 +1,13 @@
+build:
+  version: "default-CARDS-version"
+
+cards:
+  message: "Welcome to bank - CARDS microservice - DEFAULT"
+  contacts:
+    name: "Default Lead"
+    email: "default_support@bank.com"
+  phones:
+    - (111) 111 1110
+    - (111) 111 1111
+    - (111) 111 1112
+

@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  accounts_service:
+    image: "lokeshjavatech/accounts_image:v1"
+    container_name: "accounts_container"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - "lokesh_network"
+
+  loans_service:
+    image: "lokeshjavatech/loans_image:v1"
+    container_name: "loans_container"
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - "lokesh_network"
+
+  cards_service:
+    image: "lokeshjavatech/cards_image:v1"
+    container_name: "cards_container"
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - "lokesh_network"
+
+networks:
+  lokesh_network:
+    driver: "bridge"
