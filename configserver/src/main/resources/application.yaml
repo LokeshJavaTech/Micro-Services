@@ -19,5 +19,9 @@ spring:
           default-label: master
           timeout: 5
           clone-on-start: true
+          force-pull: true
           search-paths:
             - file-location-for-config-files
+
+encrypt:
+  key: "ENCRYPTION_AND_DECRYPTION_KEY_AND_THIS_PROPERTY_AUTOMATICALLY_ENABLES_ENCRYPT_AND_DECRYPT_ENDPOINTS"

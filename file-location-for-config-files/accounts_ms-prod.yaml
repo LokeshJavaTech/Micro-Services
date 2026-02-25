@@ -5,7 +5,7 @@ accounts:
   message: "Welcome to bank - ACCOUNTS microservice - PROD"
   contacts:
     name: "PROD Lead"
-    email: "prod_support@bank.com"
+    email: "{cipher}5912699e071b32502852788e8fe571dee8029078662ade85154ea4a7d4dc775d6c52dd83751c97722cd8964f3c6ca7bd"
   phones:
     - (333) 333 3330
     - (333) 333 3331
