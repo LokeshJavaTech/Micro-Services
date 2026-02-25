@@ -41,3 +41,9 @@ logging:
         orm:
           jdbc:
             bind: TRACE                                     # Show bind parameters
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh"
