@@ -2,7 +2,7 @@ build:
   version: "dev-ACCOUNTS-version"
 
 accounts:
-  message: "Welcome to bank - ACCOUNTS microservice - DEV UPDATED MESSAGE"
+  message: "Welcome to bank - ACCOUNTS microservice - DEV"
   contacts:
     name: "Dev Lead"
     email: "dev_support@bank.com"
