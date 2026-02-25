@@ -6,12 +6,18 @@ spring:
     name: configserver_ms
 
   profiles:
-    active: native
-
+    #active: native
+    active: git
   cloud:
     config:
       server:
-        native:
+        #native:
           #search-locations: "classpath:/config"
-          search-locations: "file:///D://workspace//Micro-Services//file-location-for-config-files"
-
+          #search-locations: "file:///D://workspace//Micro-Services//file-location-for-config-files"
+        git:
+          uri: "https://github.com/LokeshJavaTech/Micro-Services.git"
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          search-paths:
+            - file-location-for-config-files
