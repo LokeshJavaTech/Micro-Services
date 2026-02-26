@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lokesh</groupId>
-	<artifactId>configserver</artifactId>
+	<artifactId>config_server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>configserver</name>
+	<name>config_server</name>
 	<description>Config Server Microservice</description>
 	<url/>
 	<licenses>

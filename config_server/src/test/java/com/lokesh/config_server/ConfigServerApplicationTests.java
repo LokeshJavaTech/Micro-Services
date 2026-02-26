@@ -1,10 +1,10 @@
-package com.lokesh.configserver;
+package com.lokesh.config_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConfigserverApplicationTests {
+class ConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {
