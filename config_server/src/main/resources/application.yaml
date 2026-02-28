@@ -25,3 +25,18 @@ spring:
 
 encrypt:
   key: "ENCRYPTION_AND_DECRYPTION_KEY_AND_THIS_PROPERTY_AUTOMATICALLY_ENABLES_ENCRYPT_AND_DECRYPT_ENDPOINTS"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true

@@ -1,12 +1,35 @@
-version: '3'
-
 services:
 
-  accounts_service:
+  config-server-service:
+    image: "lokeshjavatech/config_server_image:v1"
+    container_name: "config-service-container"
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      start_period: 50s
+      timeout: 50s
+      interval: 10s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - "lokesh_network"
+
+  accounts-service:
     image: "lokeshjavatech/accounts_image:v1"
-    container_name: "accounts_container"
+    container_name: "accounts-container"
     ports:
       - "8080:8080"
+    depends_on:
+      config-server-service:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "accounts_ms"
+      SPRING_PROFILES_ACTIVE: "default"
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
       resources:
         limits:
@@ -14,11 +37,18 @@ services:
     networks:
       - "lokesh_network"
 
-  loans_service:
+  loans-service:
     image: "lokeshjavatech/loans_image:v1"
-    container_name: "loans_container"
+    container_name: "loans-container"
     ports:
       - "8090:8090"
+    depends_on:
+      config-server-service:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "loans_ms"
+      SPRING_PROFILES_ACTIVE: "default"
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
       resources:
         limits:
@@ -26,11 +56,18 @@ services:
     networks:
       - "lokesh_network"
 
-  cards_service:
+  cards-service:
     image: "lokeshjavatech/cards_image:v1"
-    container_name: "cards_container"
+    container_name: "cards-container"
     ports:
       - "9000:9000"
+    depends_on:
+      config-server-service:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "cards_ms"
+      SPRING_PROFILES_ACTIVE: "default"
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
       resources:
         limits:
