@@ -46,4 +46,27 @@ management:
   endpoints:
     web:
       exposure:
-        include: "refresh"
+        include: "refresh, info"
+  endpoint:
+    shutdown:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+# To display meaning information on the eureka server
+info:
+  app:
+    name: LOANS_MICROSERVICE
+    description: Loans Micro Service Instance
+    version: 1.0.0

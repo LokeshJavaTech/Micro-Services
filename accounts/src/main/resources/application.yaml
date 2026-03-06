@@ -53,10 +53,6 @@ management:
     env:
       enabled: true
 
-#endpoints:
-#  shutdown:
-#    enabled: true
-
 eureka:
   instance:
     preferIpAddress: true
@@ -71,5 +67,5 @@ eureka:
 info:
   app:
     name: ACCOUNTS_MICROSERVICE
-    description: Accounts Application Micro Service
+    description: Accounts Micro Service Instance
     version: 1.0.0
