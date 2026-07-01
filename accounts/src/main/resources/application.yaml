@@ -45,7 +45,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "refresh, info"
+        include: "refresh, info, shutdown"
   endpoint:
     shutdown:
       access: unrestricted
