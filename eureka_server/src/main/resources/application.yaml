@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: eureka_server
+    name: eureka_server_ms
 
   config:
     import: "optional:configserver:http://localhost:8071/"
