@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: config_server_ms
+    name: config-server-ms
 
   profiles:
     #active: native
