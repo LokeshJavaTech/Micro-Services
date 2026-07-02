@@ -27,7 +27,7 @@ services:
       config-server-service:
         condition: service_healthy
     environment:
-      SPRING_APPLICATION_NAME: "accounts_ms"
+      SPRING_APPLICATION_NAME: "accounts-ms"
       SPRING_PROFILES_ACTIVE: "default"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
@@ -46,7 +46,7 @@ services:
       config-server-service:
         condition: service_healthy
     environment:
-      SPRING_APPLICATION_NAME: "loans_ms"
+      SPRING_APPLICATION_NAME: "loans-ms"
       SPRING_PROFILES_ACTIVE: "default"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
@@ -65,7 +65,7 @@ services:
       config-server-service:
         condition: service_healthy
     environment:
-      SPRING_APPLICATION_NAME: "cards_ms"
+      SPRING_APPLICATION_NAME: "cards-ms"
       SPRING_PROFILES_ACTIVE: "default"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
     deploy:
