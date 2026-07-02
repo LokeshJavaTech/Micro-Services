@@ -1,5 +1,6 @@
 package com.lokesh.accounts.mapper;
 
+import com.lokesh.accounts.dto.CustomerDetailsDto;
 import com.lokesh.accounts.dto.CustomerDto;
 import com.lokesh.accounts.entity.Customer;
 
@@ -10,6 +11,13 @@ public class CustomerMapper {
         customerDto.setEmail(customer.getEmail());
         customerDto.setMobileNumber(customer.getMobileNumber());
         return customerDto;
+    }
+
+    public static CustomerDetailsDto mapCustomerToCustomerDetailsDto(Customer customer, CustomerDetailsDto customerDetailsDto) {
+        customerDetailsDto.setName(customer.getName());
+        customerDetailsDto.setEmail(customer.getEmail());
+        customerDetailsDto.setMobileNumber(customer.getMobileNumber());
+        return customerDetailsDto;
     }
 
     public static Customer mapCustomerDtoToCustomer(CustomerDto customerDto, Customer customer) {
