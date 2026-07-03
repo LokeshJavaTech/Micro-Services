@@ -14,7 +14,7 @@ spring:
         webflux:
           discovery:
             locator:
-              enabled: true
+              enabled: false                # to disable default routes
               lower-case-service-id: true
 
 management:
@@ -25,7 +25,7 @@ management:
 
   endpoint:
     gateway:
-      enabled: true
+      access: unrestricted
 
   info:
     env:
