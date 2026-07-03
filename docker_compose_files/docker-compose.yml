@@ -52,6 +52,12 @@ services:
         condition: service_healthy
       eureka-server-service:
         condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      start_period: 50s
+      timeout: 50s
+      interval: 10s
+      retries: 10
     environment:
       SPRING_APPLICATION_NAME: "accounts-ms"
       SPRING_PROFILES_ACTIVE: "default"
@@ -74,6 +80,12 @@ services:
         condition: service_healthy
       eureka-server-service:
         condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      start_period: 50s
+      timeout: 50s
+      interval: 10s
+      retries: 10
     environment:
       SPRING_APPLICATION_NAME: "loans-ms"
       SPRING_PROFILES_ACTIVE: "default"
@@ -96,8 +108,38 @@ services:
         condition: service_healthy
       eureka-server-service:
         condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
+      start_period: 50s
+      timeout: 50s
+      interval: 10s
+      retries: 10
     environment:
       SPRING_APPLICATION_NAME: "cards-ms"
+      SPRING_PROFILES_ACTIVE: "default"
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server-service:8070/eureka/"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - "lokesh_network"
+
+  api-gateway-service:
+    image: "lokeshjavatech/api_gateway_image:v1"
+    container_name: "api-gateway-container"
+    ports:
+      - "8072:8072"
+    depends_on:
+      accounts-service:
+        condition: service_healthy
+      loans-service:
+        condition: service_healthy
+      cards-service:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "api-gateway-ms"
       SPRING_PROFILES_ACTIVE: "default"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://config-server-service:8071/"
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server-service:8070/eureka/"

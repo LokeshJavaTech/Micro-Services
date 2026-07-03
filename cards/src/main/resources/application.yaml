@@ -45,10 +45,18 @@ management:
   endpoints:
     web:
       exposure:
-        include: "refresh, info, shutdown"
+        include: "refresh, info, shutdown, health"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoint:
     shutdown:
       access: unrestricted
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
