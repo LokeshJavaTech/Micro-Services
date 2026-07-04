@@ -20,7 +20,9 @@ public class ApiGatewayApplication {
 				.route(p -> p.path("/eazybank/accounts-ms/**")
 						.filters(
 								f -> f.rewritePath("/eazybank/accounts-ms/(?<segment>.*)", "/${segment}")
-													  .circuitBreaker(config -> config.setName("accountsCircuitBreaker"))
+													  .circuitBreaker(config -> config.setName("accountsCircuitBreaker")
+															  								 .setFallbackUri("forward:/contactSupport")
+													  )
 						)
 						.uri("lb://ACCOUNTS-MS"))
 				.route(p -> p.path("/eazybank/loans-ms/**")
