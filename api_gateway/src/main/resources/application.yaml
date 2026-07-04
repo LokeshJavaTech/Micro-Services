@@ -47,3 +47,13 @@ info:
     name: API_GATEWAY_MICROSERVICE
     description: API Gateway Micro Service Instance
     version: 1.0.0
+
+# circuit breaker configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:                                          # this configuration is applicable to all circuit breakers in this microservice (API Gateway)
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
