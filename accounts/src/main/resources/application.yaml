@@ -1,6 +1,7 @@
 server:
   port: 8080
 
+
 spring:
   application:
     name: accounts-ms
@@ -30,6 +31,11 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071/"
 
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 
 # To also show bind parameter values
 logging:
@@ -41,11 +47,12 @@ logging:
           jdbc:
             bind: TRACE                                     # Show bind parameters
 
+
 management:
   endpoints:
     web:
       exposure:
-        include: "refresh, info, shutdown, health"
+        include: "refresh, info, shutdown, health, circuitbreakers, circuitbreakerevents"
   health:
     readiness-state:
       enabled: true
@@ -61,6 +68,7 @@ management:
     env:
       enabled: true
 
+
 eureka:
   instance:
     preferIpAddress: true
@@ -71,9 +79,21 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
 
+
 # To display meaning information on the eureka server
 info:
   app:
     name: ACCOUNTS_MICROSERVICE
     description: Accounts Micro Service Instance
     version: 1.0.0
+
+
+# circuit breaker configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:                                          # this configuration is applicable to all circuit breakers in this microservice (API Gateway)
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
