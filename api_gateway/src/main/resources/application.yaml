@@ -1,6 +1,7 @@
 server:
   port: 8072
 
+
 spring:
   application:
     name: api-gateway-ms
@@ -17,6 +18,13 @@ spring:
               enabled: false                # to disable default routes
               lower-case-service-id: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:7080/realms/master/protocol/openid-connect/certs"
+
+
 management:
   endpoints:
     web:
@@ -31,6 +39,7 @@ management:
     env:
       enabled: true
 
+
 eureka:
   instance:
     preferIpAddress: true
@@ -41,12 +50,14 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
 
+
 # To display meaning information on the eureka server
 info:
   app:
     name: API_GATEWAY_MICROSERVICE
     description: API Gateway Micro Service Instance
     version: 1.0.0
+
 
 # circuit breaker configuration
 resilience4j:
